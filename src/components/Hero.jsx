@@ -33,9 +33,9 @@ const Hero = () => {
           <div className="z-10 pr-4 sm:pr-0">
             {/* MOBILE VIEW */}
             <div className="block sm:hidden">
-              <h1 className="text-[20px] xxs:text-[28px] xs:text-[34px] font-poppins font-extrabold uppercase text-gray-700 leading-tight">
-                Hi, I'm{' '}
-                <span className="text-hero text-[30px] xxs:text-[36px] xs:text-[44px] font-mova uppercase">
+              <h1 className="text-[28px] xxs:text-[32px] xs:text-[34px] font-poppins font-extrabold uppercase text-gray-700 leading-tight">
+                Hi, I'm{' '} <br />
+                <span className="text-hero text-[26px] xxs:text-[30px] xs:text-[44px] font-mova uppercase">
                   VIGNESHWARI
                 </span>
               </h1>
