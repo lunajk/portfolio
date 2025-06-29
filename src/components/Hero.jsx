@@ -35,7 +35,7 @@ const Hero = () => {
             <div className="block sm:hidden">
               <h1 className="text-[28px] xxs:text-[32px] xs:text-[34px] font-poppins font-extrabold uppercase text-gray-700 leading-tight">
                 Hi, I'm{' '} <br />
-                <span className="text-hero text-[26px] xxs:text-[30px] xs:text-[44px] font-mova uppercase">
+                <span className="text-hero text-[24px] xxs:text-[28px] xs:text-[44px] font-mova uppercase">
                   VIGNESHWARI
                 </span>
               </h1>
