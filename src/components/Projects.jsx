@@ -30,7 +30,7 @@ h-[380px] cursor-pointer card-shadow rounded-[18px] bg-gray-300`}
         <div className="flex items-center justify-start pr-[3rem]">
           <h3
             className="font-extrabold font-beckman uppercase w-[180px] h-[24px] 
-            whitespace-nowrap sm:text-[20px] text-[16px] text-black tracking-[0.5px]
+            whitespace-nowrap sm:text-[28px] text-[16px] text-black tracking-[0.5px]
             absolute z-10 lg:bottom-[5rem] lg:rotate-[-90deg] lg:origin-[0,0]
             leading-none"
           >

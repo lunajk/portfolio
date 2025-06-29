@@ -115,7 +115,7 @@ image: learn,
   },
   {
     id: 'project-4',
-    name: 'Document Management System',
+    name: 'Document Management',
     description:
       'DOCUMENT MANAGEMENT SYSTEM - A document management platform for managing and tracking import/export product documents from foreign countries. Supports document uploads, role-based approvals, reconciliation reports, and audit history — enhancing compliance and documentation workflow for import operations.',
     tags: [
