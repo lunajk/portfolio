@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
       {/* ====================== Mobile Nav ====================== */}
-      <nav className="sm:hidden fixed top-0 left-0 z-50 w-[300px] bg-flashWhite shadow-md">
+      <nav className="sm:hidden fixed top-0 left-0 z-50 w-[440px] bg-flashWhite shadow-md">
         <div className="w-full flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <Link
