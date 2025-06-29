@@ -101,10 +101,12 @@ toast.success("✅ Message sent successfully! I’ll get back to you soon.", {
 
   <div className="flex items-start gap-3">
     <img src={mailIcon} alt="mail" className="w-5 h-5 object-contain" />
-    <div>
-      <h4 className="font-semibold text-gray-200">Email</h4>
-      <p className="text-gray-400">vigneshwarisakthivel8@gmail.com</p>
-    </div>
+<div className="w-full overflow-x-auto">
+  <p className="text-gray-400 whitespace-nowrap">
+    vigneshwarisakthivel8@gmail.com
+  </p>
+</div>
+
   </div>
 
   <div className="flex items-start gap-3">

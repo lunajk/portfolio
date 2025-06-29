@@ -35,7 +35,7 @@ const Navbar = () => {
 
 
       {/* ====================== Mobile Nav ====================== */}
-      <nav className="sm:hidden fixed top-0 left-0 z-50 w-[480px] bg-flashWhite shadow-md">
+      <nav className="sm:hidden fixed top-0 left-0 z-50 w-[300px] bg-flashWhite shadow-md">
         <div className="w-full flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <Link
@@ -47,8 +47,8 @@ const Navbar = () => {
               setToggle(false);
             }}
           >
-            <h1 className="text-[18px] font-extrabold text-black tracking-widest whitespace-nowrap">
-              VIGNESHWARI SAKTHIVEL
+            <h1 className="text-[14px] font-extrabold text-black tracking-widest whitespace-nowrap">
+              VIGNESHWARI S
             </h1>
           </Link>
 
