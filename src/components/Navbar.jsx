@@ -1,95 +1,89 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { styles } from '../styles.js';
 import { navLinks } from '..';
-import { close, menu, logo, logotext } from '../assets';
+import { menu, close } from '../assets';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav
-      className={`${styles.paddingX} w-full flex items-center py-2 fixed 
-      top-0 z-20 bg-flashWhite sm:opacity-[0.97] xxs:h-[12vh]`}>
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive('');
-            window.scrollTo(0, 0);
-          }}>
+    <>
+      {/* ====================== Desktop Nav ====================== */}
+<nav className="hidden sm:flex fixed top-0 left-0 z-50 w-full bg-flashWhite shadow-md">
+  <div className="max-w-[1280px] w-full mx-auto flex items-center justify-between px-10 py-2">
+    <Link to="/" onClick={() => setActive('')} className="flex items-center">
+      <h1 className="text-[20px] sm:text-[35px] font-extrabold text-black tracking-widest leading-tight">
+        VIGNESHWARI SAKTHIVEL
+      </h1>
+    </Link>
+    <ul className="flex flex-row gap-8">
+      {navLinks.map((nav) => (
+        <li
+          key={nav.id}
+          className={`${
+            active === nav.title ? 'text-french' : 'text-eerieBlack'
+          } hover:text-taupe text-[17px] font-mova uppercase tracking-wide cursor-pointer`}
+          onClick={() => setActive(nav.title)}
+        >
+          <a href={`#${nav.id}`}>{nav.title}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
 
 
-<div className="flex items-center justify-start">
-  <h1 className="text-[26px] sm:text-[30px] font-extrabold text-black tracking-widest">
-    VIGNESHWARI SAKTHIVEL
-  </h1>
-</div>
+      {/* ====================== Mobile Nav ====================== */}
+      <nav className="sm:hidden fixed top-0 left-0 z-50 w-[480px] bg-flashWhite shadow-md">
+        <div className="w-full flex items-center justify-between px-4 py-3">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="flex items-center"
+            onClick={() => {
+              setActive('');
+              window.scrollTo(0, 0);
+              setToggle(false);
+            }}
+          >
+            <h1 className="text-[18px] font-extrabold text-black tracking-widest whitespace-nowrap">
+              VIGNESHWARI SAKTHIVEL
+            </h1>
+          </Link>
 
-        </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? 'text-french' : 'text-eerieBlack'
-              } hover:text-taupe text-[21px] font-medium font-mova 
-                uppercase tracking-[3px] cursor-pointer nav-links`}
-              onClick={() => setActive(nav.title)}>
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
-        </ul>
-
-        {/* mobile */}
-        <div className="sm:hidden flex flex-1 w-screen justify-end items-center">
-          {toggle ? (
-            <div
-              className={`p-6 bg-flashWhite opacity-[0.98] absolute 
-                top-0 left-0 w-screen h-[100vh] z-10 menu ${
-                  toggle ? 'menu-open' : 'menu-close'
-                }`}>
-              <div className="flex justify-end">
-                <img
-                  src={close}
-                  alt="close"
-                  className="w-[22px] h-[22px] object-contain cursor-pointer"
-                  onClick={() => setToggle(!toggle)}
-                />
-              </div>
-              <ul
-                className="list-none flex flex-col -gap-[1rem] 
-                items-start justify-end mt-[10rem] -ml-[35px]">
-                {navLinks.map((nav) => (
-                  <li
-                    id={nav.id}
-                    key={nav.id}
-                    className={`${
-                      active === nav.title ? 'text-french' : 'text-eerieBlack'
-                    } text-[88px] font-bold font-arenq 
-                      uppercase tracking-[1px] cursor-pointer`}
-                    onClick={() => {
-                      setToggle(!toggle);
-                      setActive(nav.title);
-                    }}>
-                    <a href={`#${nav.id}`}>{nav.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <img
-              src={menu}
-              alt="menu"
-              className="w-[34px] h-[34px] object-contain cursor-pointer"
-              onClick={() => setToggle(!toggle)}
-            />
-          )}
+          {/* Menu Toggle */}
+          <img
+            src={toggle ? close : menu}
+            alt="menu"
+            className="w-[28px] h-[28px] object-contain cursor-pointer"
+            onClick={() => setToggle(!toggle)}
+          />
         </div>
-      </div>
-    </nav>
+
+        {/* Dropdown Menu */}
+        {toggle && (
+          <div className="bg-flashWhite px-6 py-4 shadow-md">
+            <ul className="flex flex-col gap-6">
+              {navLinks.map((nav) => (
+                <li
+                  key={nav.id}
+                  className={`${
+                    active === nav.title ? 'text-french' : 'text-eerieBlack'
+                  } text-[18px] font-semibold font-mova uppercase tracking-wider cursor-pointer`}
+                  onClick={() => {
+                    setActive(nav.title);
+                    setToggle(false);
+                  }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 

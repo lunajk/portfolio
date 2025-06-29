@@ -3,11 +3,10 @@ import { motion } from 'framer-motion';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../styles.js';
 import { projects } from "../constants";
-
-
 import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 
-const ProjectCard = ({
+// Desktop version
+const DesktopProjectCard = ({
   id,
   name,
   description,
@@ -71,44 +70,66 @@ h-[380px] cursor-pointer card-shadow rounded-[18px] bg-gray-300`}
 };
 
 
+// Mobile version (stacked)
+const MobileProjectCard = ({ name, description, image }) => (
+  <motion.div
+    variants={fadeIn('right', 'spring', 0.5, 0.75)}
+    className="bg-gray-200 rounded-[18px] p-4 shadow-md mb-6"
+  >
+    <div className="flex items-center gap-4 mb-2">
+      <div className="w-[60px] h-[60px] bg-black-100 border border-gray-300 rounded-[12px] flex items-center justify-center shadow-md">
+        <img src={image} alt={name} className="w-[30px] h-[30px] object-contain" />
+      </div>
+      <h2 className="font-bold text-[18px] uppercase font-beckman text-[#0a0a0a]">
+        {name}
+      </h2>
+    </div>
+    <p className="text-[13px] leading-[20px] font-poppins tracking-[0.5px] text-[#0a0a0a]">
+      {description}
+    </p>
+  </motion.div>
+);
+
 const Projects = () => {
   const [active, setActive] = useState('project-2');
 
   return (
     <div className="-mt-[6rem]">
       <motion.div variants={textVariant()}>
-                  <p className="text-[24px] sm:text-[28px] font-bold text-platinumLight tracking-wide">
-    Case Studies
-  </p>
+        <p className="text-[24px] sm:text-[28px] font-bold text-platinumLight tracking-wide">
+          Case Studies
+        </p>
         <h2 className={`${styles.sectionHeadTextLight}`}>Projects.</h2>
       </motion.div>
 
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn('', '', 0.1, 1)}
-          className="mt-4 text-platinum text-[18px] max-w-3xl leading-[30px]">
-     These projects highlight my ability to build scalable, secure, and cloud-deployed web applications. They demonstrate practical experience in React.js, Django REST Framework, and PostgreSQL, along with RESTful API integrations, real-time dashboards, and CI/CD deployments. Each project reflects my skills in tackling complex challenges, developing clean, efficient solutions, and collaborating within Agile teams.
-        </motion.p>
+      <motion.p
+        variants={fadeIn('', '', 0.1, 1)}
+        className="mt-4 text-platinum text-[16px] sm:text-[18px] max-w-3xl leading-[28px] sm:leading-[30px]"
+      >
+        These projects highlight my ability to build scalable, secure, and
+        cloud-deployed web applications using React, Django REST, PostgreSQL,
+        APIs, dashboards, and CI/CD.
+      </motion.p>
+
+      {/* Desktop layout */}
+      <div className="hidden lg:flex mt-[50px] flex-row min-h-[70vh] gap-5">
+        {projects.map((project, index) => (
+          <DesktopProjectCard
+            key={project.id}
+            index={index}
+            {...project}
+            active={active}
+            handleClick={setActive}
+          />
+        ))}
       </div>
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.25 }}
-        className={`${styles.innerWidth} mx-auto flex flex-col`}>
-        <div className="mt-[50px] flex lg:flex-row flex-col min-h-[70vh] gap-5">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              index={index}
-              {...project}
-              active={active}
-              handleClick={setActive}
-            />
-          ))}
-        </div>
-      </motion.div>
+      {/* Mobile layout */}
+      <div className="flex lg:hidden flex-col mt-10">
+        {projects.map((project) => (
+          <MobileProjectCard key={project.id} {...project} />
+        ))}
+      </div>
     </div>
   );
 };
